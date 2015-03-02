@@ -1,0 +1,6 @@
+This module calls shutdown() on every TCP socket that got no packets (either
+data or ACK) from the peer for the specified amount of time.  It's ugly
+workaround for lack of timeout options in zillion of network libraries.
+shutdown() call unlocks thread that's locked on recv() or send() call.
+
+The module is not portable and uses Linux-specific TCP_INFO structure.
